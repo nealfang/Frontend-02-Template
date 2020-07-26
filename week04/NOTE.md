@@ -52,3 +52,23 @@
 + 第五步 bodyParser 
 
   + ![image-20200726175001326](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200726175001326.png)
+
+
+
++ 解析HTML
+
+  + 第一步 
+    + ![image-20200726180346040](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200726180346040.png)
+  + 第二步
+    + ![image-20200726181340392](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200726181340392.png)
+
+  + 第三步 解析标签
+    + ![image-20200726193939577](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200726193939577.png)
+  + 第四步 创建元素
+    + ![image-20200726195756632](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200726195756632.png)
+
+  + 第五步 处理属性
+    + ![image-20200726212454994](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200726212454994.png)
+  + 第六步
+    + ![image-20200726221159419](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200726221159419.png)
+  + 第七步 文本标签处理
