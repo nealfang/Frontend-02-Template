@@ -44,7 +44,7 @@ function emit(token) {
     if (currentTextNode == null) {
       currentTextNode = {
         type: 'text',
-        content: 'a'
+        content: ''
       }
       stackTop.children.push(currentTextNode)
     }

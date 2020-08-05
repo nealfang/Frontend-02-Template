@@ -7,11 +7,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "DEBUG",
+      "name": "启动程序",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\client.js"
+      "program": "${workspaceFolder}\\src\\client.js"
     }
   ]
 }
