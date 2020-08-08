@@ -11,25 +11,32 @@ http.createServer((req, res) => {
     console.log("body", body)
     res.writeHead(200, { 'Content-Type': 'text/html' }) // 必写
     // res.end(' Hello World\n')
-    res.end(
-`<html lang="en">
+    res.end(`
+<html maaa=a >
 <head>
-  <style>
-body div img {
-  width: 30px;
-  background-color: #cccccc;
+    <style>
+#container{
+    width:500px;
+    height:300px;
+    display:flex;
+    background-color:rgb(255,255,255);
 }
-body div #myid {
-  width: 30px;
-  background-color: #fff111
+#container #myid{
+    width: 200px;
+    height:100px;
+    background-color:rgb(255,0,0);
 }
-  </style>
+#container .c1{
+    flex:1;
+    background-color:rgb(0,255,0);
+}
+    </style>
 </head>
 <body>
-  <div>
-    <img id="myid" />
-    <img />
-  </div>
+    <div id="container">
+        <div id="myid" ></div>
+        <div class="c1" ></div>
+    </div>
 </body>
 </html>`)
   })

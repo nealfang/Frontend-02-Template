@@ -1,5 +1,6 @@
 const css = require('css')
 const EOF = Symbol('EOF') // end of file
+const layout = require('./layout.js')
 let currentToken = null
 let currentAttribute = null
 let currentTextNode = null
@@ -46,7 +47,6 @@ function compare(sp1, sp2) {
 
   return sp1[3] - sp2[3]
 }
-
 
 /**
  *  selector: 这里只处理简单选择器，比如
@@ -170,6 +170,7 @@ function emit(token) {
       if (stackTop.tagName === 'style') {
         addCSSRules(stackTop.children[0].content)
       }
+      layout(stackTop)
       stack.pop()
     }
     currentTextNode = null
