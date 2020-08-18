@@ -94,4 +94,4 @@
 
 CSS 属性分类（初稿，原图在images文件夹）
 
-<img src="[https://github.com/nealfang/Frontend-02-Template/blob/master/week07/images/CSS%E5%B1%9E%E6%80%A7%E5%88%86%E7%B1%BB.png](https://github.com/nealfang/Frontend-02-Template/blob/master/week07/images/CSS属性分类.png)" alt="CSS属性分类" style="zoom:200%;" />
+<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week07/images/CSS属性分类.png" alt="CSS属性分类" style="zoom:200%;" />
