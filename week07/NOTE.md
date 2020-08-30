@@ -6,7 +6,7 @@
 
 + 盒模型
 
-<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week06/images/1.jpg" alt="img" style="zoom:50%;" />
+<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week07/images/1.jpg" alt="img" style="zoom:50%;" />
 
 + 正常流
   + 排版的基本步骤
@@ -18,11 +18,11 @@
     + IFC 行级格式化上下文，从左往右排列
     + 图例
 
-<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week06/images/2.jpg" alt="img" style="zoom:50%;" />
+<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week07/images/2.jpg" alt="img" style="zoom:50%;" />
 
 + 正常流的行级排布
 
-<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week06/images/3.jpg" alt="img" style="zoom:50%;" />
+<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week07/images/3.jpg" alt="img" style="zoom:50%;" />
 
 + 正常流的块级排布 
 
@@ -95,4 +95,4 @@
 
 CSS 属性分类（初稿，原图在images文件夹）
 
-<img src="[https://github.com/nealfang/Frontend-02-Template/blob/master/week06/images/CSS%E5%B1%9E%E6%80%A7%E5%88%86%E7%B1%BB.png](https://github.com/nealfang/Frontend-02-Template/blob/master/week06/images/CSS属性分类.png)" alt="CSS属性分类" style="zoom:200%;" />
+<img src="https://github.com/nealfang/Frontend-02-Template/blob/master/week07/images/CSS属性分类.png" alt="CSS属性分类" style="zoom:200%;" />
