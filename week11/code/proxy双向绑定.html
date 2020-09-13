@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let callbacks = new Map() // 这里为什么要用Map
+    let usedReactivties = []
+    const obj = { a: 1, b: 2 }
+    const proxyObj = reactive(obj)
+
+    effect(() => {
+      console.log(proxyObj.b);
+    })
+
+    function effect(callback) {
+      usedReactivties = []
+      callback()
+      console.log(usedReactivties);
+      for (let reactivty of usedReactivties) {
+        if (!callbacks.has(reactivty[0])) { // 防止多次注册
+          callbacks.set(reactivty[0], new Map())
+        }
+        if (!callbacks.get(reactivty[0]).has(reactivty[1])) {
+          callbacks.get(reactivty[0]).set(reactivty[1], [])
+        }
+        callbacks.get(reactivty[0]).get(reactivty[1]).push(callback)
+      }
+    }
+
+    function reactive(obj) {
+      return new Proxy(obj, {
+        set(obj, prop, val) {
+          obj[prop] = val
+          if (callbacks.get(obj)) {
+            if (callbacks.get(obj).get(prop)) {
+              for (let callback of callbacks.get(obj).get(prop)) {
+                callback()
+              }
+            }
+          }
+          return obj[prop]
+        },
+        get(obj, prop) {
+          usedReactivties.push([obj, prop]) //监听当前调用了哪些属性
+          return obj[prop]
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>
