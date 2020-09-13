@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drage</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #drage-box {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="drage-box"></div>
+  <script>
+    const drageBox = document.getElementById('drage-box');
+
+    let baseX = 0
+    let baseY = 0
+
+    drageBox.addEventListener('mousedown', e => {
+      let sX = e.clientX, sY = e.clientY
+
+      let up = (e) => {
+        baseX = baseX + e.clientX - sX
+        baseY = baseX + e.clientY - sY
+
+        document.removeEventListener('mousemove', move)
+        document.removeEventListener('mouseup', up)
+      }
+
+      let move = e => {
+        drageBox.style.transform = `translate(${baseX + e.clientX - sX}px, ${baseX + e.clientY - sY}px)`
+      }
+
+      document.addEventListener('mousemove', move)
+      document.addEventListener('mouseup', up)
+
+    })
+
+  </script>
+</body>
+
+</html>
