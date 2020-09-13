@@ -80,7 +80,7 @@
       let nearest = null
 
       for (const range of ranges) {
-        const rect = range.getBoundingClientRect();
+        const rect = range.getBoundingClientRect(); // CSSOM, 获取每个range的位置
         const distance = (rect.x - x) ** 2 + (rect.y - y) ** 2;
 
         if (distance < min) {
