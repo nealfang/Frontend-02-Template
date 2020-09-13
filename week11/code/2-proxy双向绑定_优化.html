@@ -55,7 +55,9 @@
         },
         get(obj, prop) {
           usedReactivties.push([obj, prop]) //监听当前调用了哪些属性
-          // 处理嵌套对象的情况
+          // 处理嵌套对象的情况，递归调用 reactive
+          // 但有个问题，reactive 每被调用一次， new Proxy 会生成一个新的实例，影响取存的不一致
+          // reactives 缓存第一次new Proxy生成的实例
           if (typeof obj[prop] === 'object' && obj[prop]) {
             return reactive(obj[prop])
           }

@@ -9,7 +9,7 @@
 
 <body>
   <script>
-    let callbacks = new Map() // 这里为什么要用Map
+    let callbacks = new Map()
     let usedReactivties = []
     const obj = { a: 1, b: 2 }
     const proxyObj = reactive(obj)
@@ -20,7 +20,7 @@
 
     function effect(callback) {
       usedReactivties = []
-      callback()
+      callback() // 这里调用之后，会出发get的调用，就可以记录当前是读取/修改哪个属性了
       console.log(usedReactivties);
       for (let reactivty of usedReactivties) {
         if (!callbacks.has(reactivty[0])) { // 防止多次注册
