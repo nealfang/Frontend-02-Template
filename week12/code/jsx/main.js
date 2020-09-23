@@ -25,7 +25,7 @@ class Carousel extends Component {
 
       const move = e => {
         const x = e.clientX - startX
-        let current = position - ((x - x % 500) / 500)
+        let current = position - ((x - x % 500) / 500) // 当前再屏幕上的元素的位置
 
         for (const offset of [-1, 0, 1]) {
           let pos = current + offset
@@ -38,10 +38,13 @@ class Carousel extends Component {
 
       const up = e => {
         const x = e.clientX - startX
-        position -= Math.round(x / 500)
-        for (const child of children) {
+        position = position - Math.round(x / 500)
+        for (const offset of [0, -Math.sign(Math.round(x / 500) - x + 250 * Math.sign(x))]) {
+          let pos = position + offset
+          pos = (pos + children.length) % children.length // 处理掉负数
+          const child = children[pos]
           child.style.transition = ''
-          child.style.transform = `translateX(${-position * 500}px)`
+          child.style.transform = `translateX(${- pos * 500 + offset * 500}px)`
         }
         document.removeEventListener('mousemove', move)
         document.removeEventListener('mouseup', up)
