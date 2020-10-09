@@ -1,4 +1,5 @@
 import { Timeline, Animation } from './animation.js'
+import { linear, ease, easeIn, easeInOut, easeOut } from './ease.js'
 
 let timeline = new Timeline()
 timeline.add(new Animation(
@@ -8,7 +9,7 @@ timeline.add(new Animation(
   500,
   3000,
   0,
-  null,
+  easeOut,
   v => `translateX(${v}px)`))
 timeline.start()
 

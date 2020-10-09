@@ -8,11 +8,16 @@ const RESUME_TIME = Symbol('resume-time')
 
 export class Timeline {
   constructor() {
+    this.state = "inited"
     this[ANIMATIONS] = new Set()
     this[START_TIME] = new Map()
   }
 
   start() {
+    if (this.state !== "inited") {
+      return;
+    }
+    this.state = "started"
     let startTime = Date.now()
     this[RESUME_TIME] = 0
     this[TICK] = () => {
@@ -22,15 +27,17 @@ export class Timeline {
         let animationStartTime = this[START_TIME].get(animation)
 
         if (animationStartTime < startTime) {
-          t = now - startTime - this[RESUME_TIME]
+          t = now - startTime - this[RESUME_TIME] - animation.delay
         } else {
-          t = now - animationStartTime - this[RESUME_TIME]
+          t = now - animationStartTime - this[RESUME_TIME] - animation.delay
         }
         if (animation.duration < t) {
           this[ANIMATIONS].delete(animation)
           t = animation.duration
         }
-        animation.receive(t)
+        if (t > 0) {
+          animation.receive(t)
+        }
       }
       this[TICk_HANDLER] = requestAnimationFrame(this[TICK])
     }
@@ -41,17 +48,27 @@ export class Timeline {
   // get rate(){}
 
   pause() {
+    if (this.state !== "started") return;
+    this.state = 'paused'
     this[PAUSE_START] = Date.now()
     cancelAnimationFrame(this[TICk_HANDLER])
   }
 
   resume() {
+    if (this.state !== "paused") return;
+    this.state = 'started'
     this[RESUME_TIME] += Date.now() - this[PAUSE_START]
     this[TICK]()
   }
 
   reset() {
-
+    this.pause()
+    this.state = "inited"
+    this[PAUSE_TIME] = 0
+    this[ANIMATIONS] = new Set()
+    this[START_TIME] = new Map()
+    this[PAUSE_START] = 0
+    this[TICK_HANDLER] = null
   }
 
   add(animation, startTime) {
@@ -78,13 +95,14 @@ export class Animation {
     this.startValue = startValue
     this.endValue = endValue
     this.duration = duration
-    this.timingFunction = timingFunction
+    this.timingFunction = timingFunction || (v => v)
     this.delay = delay
-    this.template = template
+    this.template = template || (v => v)
   }
 
   receive(time) {
+    let progress = this.timingFunction(time / this.duration)
     let range = this.endValue - this.startValue
-    this.object[this.property] = this.template(this.startValue + range * time / this.duration) // 如何理解？
+    this.object[this.property] = this.template(this.startValue + range * progress)
   }
 }
