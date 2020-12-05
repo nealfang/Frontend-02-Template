@@ -7,3 +7,7 @@
 scp -P 8022 -r ./* neal@127.0.0.1:/home/neal/server
   ./*  在win10无效
   改用 Xftp 的方式发送文件
+
+
+nodejs
+流
